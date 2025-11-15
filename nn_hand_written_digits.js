@@ -3,23 +3,24 @@ import { sigmoid, sigmoidDerivative, randomGaussian, shuffleArray } from './util
 /**
  * Neural Network Class
  * Implements a feedforward neural network with backpropagation learning.
+ * @param {Array<number>} sizes - [784, 30, 10]
  */
 class NeuralNetwork {
   constructor(sizes) {
     this.numLayers = sizes.length;
     this.sizes = sizes;
+    this.weights = []
 
     // Initialize biases: one vector for each layer except the input layer
     // For sizes [784, 30, 10], we get biases for layers with 30 and 10 neurons
-    this.biases = sizes.slice(1).map(numNeurons =>
-      Array.from({ length: numNeurons }, () => randomGaussian())
-    );
+    this.biases = sizes.slice(1).map(numberNeurons => {
+      Array.from({ length: numberNeurons }, () => randomGaussian())
+    })
 
     // Initialize weights: matrices connecting each layer to the next
     // For sizes [784, 30, 10]:
     // - weights[0] is a 30x784 matrix (connecting 784 inputs to 30 hidden neurons)
     // - weights[1] is a 10x30 matrix (connecting 30 hidden to 10 output neurons)
-    this.weights = [];
     for (let i = 0; i < sizes.length - 1; i++) {
       const rows = sizes[i + 1];    // Number of neurons in next layer
       const cols = sizes[i];        // Number of neurons in current layer
@@ -43,11 +44,11 @@ class NeuralNetwork {
     let currentLayerOutputs = inputs;
 
     // Pass through each layer
-    for (let layerIndex = 0; layerIndex < this.weights.length; layerIndex++) {
-      const weightsForThisLayer = this.weights[layerIndex];
-      const biasesForThisLayer = this.biases[layerIndex];
+    for (let currentLayerIndex = 0; currentLayerIndex < this.weights.length; currentLayerIndex++) {
+      const weightsForThisLayer = this.weights[currentLayerIndex];
+      const biasesForThisLayer = this.biases[currentLayerIndex];
 
-      // Calculate the weighted sum + bias for each neuron in the next layer
+      // Calculate the next layer outputs which are weighted sum + bias for each neuron in the next layer
       const nextLayerOutputs = [];
 
       // For each neuron in the NEXT layer
