@@ -557,7 +557,7 @@ function renderWeightMatrix() {
 function renderUpdateComparison() {
   if (!oldWeights || !oldBiases) return '';
 
-  let html = '<div style="margin-top: 20px; padding: 20px;">';
+  let html = '<div>';
 
   // First show all weight matrices
   html += '<div style="margin-bottom: 40px;">';
@@ -691,6 +691,8 @@ function displayCalculation() {
     if (networkPanel) networkPanel.style.display = 'block';
     if (mainGrid) mainGrid.style.display = 'grid';
     if (calculationPanel) {
+      calculationPanel.style.maxWidth = '';
+      calculationPanel.style.gridColumn = '';
       const panelHeader = calculationPanel.querySelector('h3');
       if (panelHeader) panelHeader.style.display = 'block';
     }
@@ -700,6 +702,8 @@ function displayCalculation() {
     if (networkPanel) networkPanel.style.display = 'block';
     if (mainGrid) mainGrid.style.display = 'grid';
     if (calculationPanel) {
+      calculationPanel.style.maxWidth = '';
+      calculationPanel.style.gridColumn = '';
       const panelHeader = calculationPanel.querySelector('h3');
       if (panelHeader) panelHeader.style.display = 'block';
     }
@@ -709,16 +713,19 @@ function displayCalculation() {
     if (networkPanel) networkPanel.style.display = 'block';
     if (mainGrid) mainGrid.style.display = 'grid';
     if (calculationPanel) {
+      calculationPanel.style.maxWidth = '';
+      calculationPanel.style.gridColumn = '';
       const panelHeader = calculationPanel.querySelector('h3');
       if (panelHeader) panelHeader.style.display = 'block';
     }
     displayUpdateCalc(container);
   } else if (phase === 'complete') {
-    // Hide network panel and make calculation panel full width
+    // Hide network panel and make calculation panel full width, but keep grid layout
     if (networkPanel) networkPanel.style.display = 'none';
-    if (mainGrid) mainGrid.style.display = 'block';
+    if (mainGrid) mainGrid.style.display = 'grid';
     if (calculationPanel) {
       calculationPanel.style.maxWidth = '100%';
+      calculationPanel.style.gridColumn = '1 / -1';
       // Hide the panel header
       const panelHeader = calculationPanel.querySelector('h3');
       if (panelHeader) panelHeader.style.display = 'none';
