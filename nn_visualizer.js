@@ -846,7 +846,7 @@ function displayBackpropCalc(container) {
         </div>
         
         <div style="margin: 20px 0; padding: 12px; background: #e0e7ff; border-radius: 8px;">
-          <strong>📐 Chain Rule (your formula):</strong><br>
+          <strong>📐 Chain Rule:</strong><br>
           <code style="font-size: 14px;">∂L/∂w = (∂L/∂a) · (∂a/∂z) · (∂z/∂w)</code><br>
           Here we first compute <code>∂L/∂a</code> and <code>∂a/∂z</code>, then later use them to get <code>∂L/∂w</code>.
         </div>

@@ -13,9 +13,9 @@ class NeuralNetwork {
 
     // Initialize biases: one vector for each layer except the input layer
     // For sizes [784, 30, 10], we get biases for layers with 30 and 10 neurons
-    this.biases = sizes.slice(1).map(numberNeurons => {
+    this.biases = sizes.slice(1).map(numberNeurons =>
       Array.from({ length: numberNeurons }, () => randomGaussian())
-    })
+    )
 
     // Initialize weights: matrices connecting each layer to the next
     // For sizes [784, 30, 10]:
