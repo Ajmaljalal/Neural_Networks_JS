@@ -153,9 +153,9 @@ function stepBackprop() {
 
     // Calculate cost and its derivative
     const costValue = calculateLoss(output, target);
-    const costDerivative = output - target; // dC/dOutput = d/dOutput[0.5*(output-target)²] = (output-target)
+    const costDerivative = output - target; // ∂L/∂a = ∂/∂a[0.5*(a - y)²] = (a - y)
 
-    // Error signal (gradient) = dC/dz = dC/dOutput * dOutput/dz = costDerivative * sigmoid'(z)
+    // Error signal (gradient) = ∂L/∂z = (∂L/∂a) · (∂a/∂z) = costDerivative * sigmoid'(z)
     const error = costDerivative * sigmoidDeriv;
 
     errors[currentLayer - 1][currentNeuron] = error;
@@ -394,7 +394,7 @@ function drawNetwork() {
         }
 
         // Backprop highlighting:
-        // - During weight-gradient calc, show all incoming connections to the neuron whose dC/dw we are computing.
+        // - During weight-gradient calc, show all incoming connections to the neuron whose ∂L/∂w we are computing.
         // - During error propagation to previous layer, show all outgoing connections from the neuron whose error we are computing.
         if (phase === 'backprop') {
           // We are computing gradients for weights in layer (currentLayer - 1)
@@ -714,66 +714,65 @@ function displayBackpropCalc(container) {
         <strong style="color: #e53e3e;">◀️ STEP 1: Calculate Gradient (Error) for Output Neuron ${neuronIdx}</strong>
         
         <div style="margin: 20px 0; padding: 15px; background: #fef5e7; border-radius: 8px; border-left: 4px solid #f59e0b;">
-          <strong style="color: #92400e;">📖 What we're doing:</strong><br>
-          We calculate how much this neuron contributed to the total error using the <strong>Chain Rule</strong> from calculus.<br>
-          We need to find: <strong>dC/dz</strong> (how the cost changes with respect to this neuron's weighted sum)
+          <strong style="color: #92400e;">📖 What we're doing (notation):</strong><br>
+          We use the <strong>Chain Rule</strong> with the standard symbols:<br>
+          <code>L</code> = loss, <code>a</code> = activation/output of this neuron, <code>z</code> = weighted sum before activation, <code>w</code> = weight.<br>
+          We want <strong>∂L/∂z</strong> for this neuron.
         </div>
         
         <div style="margin: 20px 0; padding: 12px; background: #e0e7ff; border-radius: 8px;">
-          <strong>📐 The Math (Chain Rule):</strong><br>
-          <code style="font-size: 14px;">dC/dz = dC/dOutput × dOutput/dz</code><br>
-          <span style="font-size: 13px; color: #3730a3;">
-            (How cost changes with z = How cost changes with output × How output changes with z)
-          </span>
+          <strong>📐 Chain Rule (your formula):</strong><br>
+          <code style="font-size: 14px;">∂L/∂w = (∂L/∂a) · (∂a/∂z) · (∂z/∂w)</code><br>
+          Here we first compute <code>∂L/∂a</code> and <code>∂a/∂z</code>, then later use them to get <code>∂L/∂w</code>.
         </div>
         
         <div style="margin: 20px 0;">
           <div style="padding: 12px; background: #fef3c7; border-radius: 8px; margin: 10px 0; border-left: 3px solid #f59e0b;">
-            <strong>📊 Cost Function (MSE):</strong><br>
+            <strong>📊 Loss function (MSE):</strong><br>
             <span style="font-size: 15px; margin-left: 20px;">
-              C = 0.5 × (output - target)²
+              L = 0.5 × (a - y)²
             </span><br>
             <span style="font-size: 15px; margin-left: 20px;">
-              C = 0.5 × (${output.toFixed(4)} - ${target.toFixed(4)})² = <strong style="color: #dc2626;">${tempCostValue.toFixed(6)}</strong>
+              L = 0.5 × (${output.toFixed(4)} - ${target.toFixed(4)})² = <strong style="color: #dc2626;">${tempCostValue.toFixed(6)}</strong>
             </span>
           </div>
           
           <div style="padding: 12px; background: #f0f9ff; border-radius: 8px; margin: 10px 0;">
-            <strong>Part 1: dC/dOutput (Cost derivative)</strong><br>
+            <strong>Part 1: ∂L/∂a (loss w.r.t. activation)</strong><br>
             <span style="font-size: 15px; margin-left: 20px;">
-              d/dOutput[0.5 × (output - target)²] = (output - target)
+              ∂/∂a [0.5 × (a - y)²] = (a - y)
             </span><br>
             <span style="font-size: 16px; margin-left: 20px;">
               = ${output.toFixed(4)} - ${target.toFixed(4)} = <strong style="color: #dc2626;">${tempCostDerivative.toFixed(4)}</strong>
             </span><br>
             <span style="font-size: 13px; color: #64748b; margin-left: 20px;">
-              (How much the cost changes if we nudge the output)
+              (How much the loss changes if we nudge this neuron's activation)
             </span>
           </div>
           
           <div style="padding: 12px; background: #f0f9ff; border-radius: 8px; margin: 10px 0;">
-            <strong>Part 2: dOutput/dz = σ'(z) (Sigmoid derivative)</strong><br>
+            <strong>Part 2: ∂a/∂z = σ'(z) (activation w.r.t. weighted sum)</strong><br>
             <span style="font-size: 16px; margin-left: 20px;">
               σ'(${z.toFixed(4)}) = <strong style="color: #2563eb;">${tempSigmoidDeriv.toFixed(4)}</strong>
             </span><br>
             <span style="font-size: 13px; color: #64748b; margin-left: 20px;">
-              (How much the output changes if we nudge z)
+              (How much the activation changes if we nudge z)
             </span>
           </div>
           
           <div style="padding: 14px; background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%); border-radius: 8px; margin: 10px 0;">
-            <strong>⛓️ Chain Rule Result: dC/dz (Gradient)</strong><br>
+            <strong>⛓️ Chain Rule Result: ∂L/∂z (this neuron's gradient)</strong><br>
             <span style="font-size: 16px; margin-left: 20px;">
-              dC/dz = ${tempCostDerivative.toFixed(4)} × ${tempSigmoidDeriv.toFixed(4)} = <strong style="color: #991b1b; font-size: 18px;">${tempError.toFixed(4)}</strong>
+              ∂L/∂z = (∂L/∂a) · (∂a/∂z) = ${tempCostDerivative.toFixed(4)} × ${tempSigmoidDeriv.toFixed(4)} = <strong style="color: #991b1b; font-size: 18px;">${tempError.toFixed(4)}</strong>
             </span><br>
             <span style="font-size: 13px; color: #7f1d1d; margin-left: 20px;">
-              ✅ This gradient tells us how to adjust weights connected to this neuron!
+              ✅ This is often written as δ = ∂L/∂z and will be used to get ∂L/∂w.
             </span>
           </div>
         </div>
         
         <div style="margin-top: 15px; padding: 10px; background: #fef3c7; border-radius: 8px; color: #78350f;">
-          💡 <strong>Simple explanation:</strong> The gradient ${tempError.toFixed(4)} tells us the direction and magnitude to adjust this neuron's weights and bias to reduce the error.
+          💡 <strong>Simple explanation:</strong> The gradient δ = ${tempError.toFixed(4)} is exactly ∂L/∂z. Multiply it by inputs later and you get ∂L/∂w.
         </div>
       </div>
     `;
@@ -782,22 +781,23 @@ function displayBackpropCalc(container) {
   } else if (currentSubStep === 'calc_weight_grad_setup') {
     container.innerHTML = `
       <div class="calculation-box">
-        <strong style="color: #e53e3e;">◀️ Ready to Calculate Weight Gradients (dC/dw)</strong>
+        <strong style="color: #e53e3e;">◀️ Ready to Calculate Weight Gradients (∂L/∂w)</strong>
         <p style="margin: 15px 0; font-size: 16px;">
-          Now that we know <strong>dC/dz</strong> for each neuron, we can calculate <strong>dC/dw</strong> (how the cost changes with each weight).
+          Now that we know <strong>∂L/∂z</strong> (δ) for each neuron, we can calculate <strong>∂L/∂w</strong> (how the loss changes with each weight).
         </p>
         <div style="padding: 12px; background: #e0e7ff; border-radius: 8px; margin: 15px 0;">
-          <strong>📐 Chain Rule for Weights:</strong><br>
-          <code style="font-size: 14px;">dC/dw = dC/dz × dz/dw</code><br>
+          <strong>📐 Chain Rule for Weights (final step):</strong><br>
+          We already have δ = ∂L/∂z from the previous step.<br>
+          <code style="font-size: 14px;">∂L/∂w = (∂L/∂z) · (∂z/∂w)</code><br>
           <span style="font-size: 13px; color: #3730a3;">
-            Since z = Σ(w × input) + bias, we have: dz/dw = input
+            Since z = Σ(w · a<sub>prev</sub>) + b, we have: ∂z/∂w = a<sub>prev</sub>.
           </span><br>
-          <code style="font-size: 14px;">Therefore: dC/dw = dC/dz × input = gradient × activation</code>
+          <code style="font-size: 14px;">Therefore: ∂L/∂w = δ · a<sub>prev</sub> = gradient × activation</code>
         </div>
         <div style="padding: 12px; background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%); border-radius: 8px; color: #7d6608;">
           📚 <strong>Simple Formula:</strong><br>
-          dC/dw = (neuron's gradient) × (input from previous layer)<br><br>
-          This tells us how much to adjust each weight to reduce the error.
+          ∂L/∂w = (neuron's gradient δ) × (activation from previous layer a<sub>prev</sub>)<br><br>
+          This tells us how much to adjust each weight to reduce the loss.
         </div>
         <p style="margin-top: 15px; color: #718096;">Click "Next Step" to calculate gradients for the first neuron.</p>
       </div>
@@ -810,23 +810,23 @@ function displayBackpropCalc(container) {
 
     let html = `
       <div class="calculation-box">
-        <strong style="color: #e53e3e;">◀️ STEP 2: Calculate dC/dw for All Weights to Neuron ${neuronIdx}</strong>
+        <strong style="color: #e53e3e;">◀️ STEP 2: Calculate ∂L/∂w for All Weights to Neuron ${neuronIdx}</strong>
         
         <div style="margin: 20px 0; padding: 15px; background: #fef5e7; border-radius: 8px; border-left: 4px solid #f59e0b;">
           <strong style="color: #92400e;">📖 What we're doing:</strong><br>
-          For each weight connecting to this neuron, we calculate <strong>dC/dw</strong> (how the cost changes with that weight).
+          For each weight connecting to this neuron, we calculate <strong>∂L/∂w</strong> (how the loss changes with that weight).
         </div>
         
         <div class="formula" style="margin: 20px 0;">
-          dC/dw = dC/dz × dz/dw = (neuron gradient) × (input)
+          ∂L/∂w = (∂L/∂z) · (∂z/∂w) = δ × a<sub>prev</sub>
         </div>
         
         <div style="margin: 20px 0;">
           <div style="padding: 12px; background: #ede9fe; border-radius: 8px; margin-bottom: 15px;">
-            <strong>This neuron's gradient (dC/dz):</strong> <span style="color: #dc2626; font-size: 16px;">${neuronGradient.toFixed(4)}</span>
+            <strong>This neuron's gradient δ = ∂L/∂z:</strong> <span style="color: #dc2626; font-size: 16px;">${neuronGradient.toFixed(4)}</span>
           </div>
           
-          <strong>Calculating dC/dw for each weight:</strong>
+          <strong>Calculating ∂L/∂w for each weight:</strong>
     `;
 
     for (let i = 0; i < SIZES[currentLayer - 1]; i++) {
@@ -835,8 +835,8 @@ function displayBackpropCalc(container) {
       html += `
         <div style="padding: 10px; background: #f0f9ff; border-radius: 8px; margin: 8px 0; border-left: 3px solid #3b82f6;">
           <strong>Weight from Neuron ${i} in previous layer:</strong><br>
-          <span style="margin-left: 20px; font-size: 15px;">
-            dC/dw = ${neuronGradient.toFixed(4)} × ${activation.toFixed(4)} = <strong style="color: #1e40af;">${weightGradient.toFixed(4)}</strong>
+            <span style="margin-left: 20px; font-size: 15px;">
+            ∂L/∂w = δ × a<sub>prev</sub> = ${neuronGradient.toFixed(4)} × ${activation.toFixed(4)} = <strong style="color: #1e40af;">${weightGradient.toFixed(4)}</strong>
           </span><br>
           <span style="font-size: 13px; color: #64748b; margin-left: 20px;">
             (gradient × activation from previous layer)
@@ -853,7 +853,7 @@ function displayBackpropCalc(container) {
         </div>
         
         <div style="margin-top: 12px; padding: 10px; background: #fef3c7; border-radius: 8px; color: #78350f;">
-          💡 <strong>Remember:</strong> These gradients tell us the direction to move each weight. In the update step, we'll use: <strong>w_new = w_old - lr × dC/dw</strong>
+          💡 <strong>Remember:</strong> These gradients are ∂L/∂w. In the update step, we'll use: <strong>w_new = w_old - lr × ∂L/∂w</strong>
         </div>
       </div>
     `;
@@ -929,8 +929,8 @@ function displayUpdateCalc(container) {
       
       <div style="margin: 15px 0; padding: 12px; background: #e0e7ff; border-radius: 8px;">
         <strong>📐 Gradient Descent Update Rule:</strong><br>
-        <code style="font-size: 15px;">w<sub>new</sub> = w<sub>old</sub> - learning_rate × dC/dw</code><br>
-        <code style="font-size: 15px;">b<sub>new</sub> = b<sub>old</sub> - learning_rate × dC/db</code><br>
+        <code style="font-size: 15px;">w<sub>new</sub> = w<sub>old</sub> - learning_rate × ∂L/∂w</code><br>
+        <code style="font-size: 15px;">b<sub>new</sub> = b<sub>old</sub> - learning_rate × ∂L/∂b</code><br>
         <span style="font-size: 13px; color: #3730a3; margin-top: 8px; display: block;">
           The minus sign means we go <strong>downhill</strong> (opposite direction of gradient) to minimize cost!
         </span>
@@ -960,7 +960,7 @@ function displayUpdateCalc(container) {
           <strong>Weight[0][0][${i}]:</strong><br>
           <div style="margin-left: 20px; font-size: 14px; margin-top: 5px;">
             <div>w<sub>old</sub> = ${oldWeight.toFixed(4)}</div>
-            <div>dC/dw = ${gradient.toFixed(4)}</div>
+            <div>∂L/∂w = ${gradient.toFixed(4)}</div>
             <div style="margin-top: 5px; padding: 8px; background: #fff; border-radius: 4px;">
               w<sub>new</sub> = ${oldWeight.toFixed(4)} - (${LEARNING_RATE} × ${gradient.toFixed(4)})<br>
               w<sub>new</sub> = ${oldWeight.toFixed(4)} - ${change.toFixed(4)}<br>
