@@ -1,62 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neural Network Complete Visualizer - Feedforward & Backprop</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neural Network Complete Visualizer - Feedforward & Backprop</title>
     <link rel="stylesheet" href="nn_visualizer.css">
   </head>
 
-  <body>
-    <div class="container">
-      <header>
-        <h1>🧠 Complete Neural Network Visualizer</h1>
-        <p class="subtitle">Watch Feedforward & Backpropagation step-by-step with live updates!</p>
-      </header>
+<body>
+  <div class="container">
+    <header>
+      <h1>🧠 Complete Neural Network Visualizer</h1>
+      <p class="subtitle">Watch Feedforward & Backpropagation step-by-step with live updates!</p>
+    </header>
 
-      <div class="control-panel">
-        <div class="status-bar" id="status">
-          Click "Reset Network" to begin!
-        </div>
-
-        <div class="progress-container">
+    <div class="control-panel">
+    <div class="progress-container">
           <div class="progress-bar">
             <div class="progress-fill" id="progress" style="width: 0%;"></div>
           </div>
           <div class="progress-text" id="progressText">0%</div>
         </div>
 
-        <div class="controls">
-          <button class="btn-success" onclick="resetNetwork()">🔄 Reset Network</button>
-          <button class="btn-primary" onclick="nextStep()">▶️ Next Step</button>
-          <button class="btn-info" onclick="autoPlay()">⏩ Auto Play</button>
-          <button class="btn-danger" onclick="stopAuto()">⏸ Stop</button>
-          <button class="btn-warning" onclick="skipToBackprop()">⚡ Skip to Backprop</button>
-        </div>
+      <div class="controls">
+        <button class="btn-success" onclick="resetNetwork()">🔄 Reset Network</button>
+        <button class="btn-primary" onclick="nextStep()">▶️ Next Step</button>
+        <button class="btn-info" onclick="autoPlay()">⏩ Auto Play</button>
+        <button class="btn-danger" onclick="stopAuto()">⏸ Stop</button>
+        <button class="btn-warning" onclick="skipToBackprop()">⚡ Skip to Backprop</button>
       </div>
+    </div>
 
-      <div class="main-grid">
-        <div class="panel">
-          <h3>🎨 Network Visualization</h3>
-          <canvas id="networkCanvas" width="750" height="650"></canvas>
-        </div>
-
-        <div class="panel">
-          <h3>🔍 Step-by-Step Calculation</h3>
-          <div id="calculationContent">
-            <p style="color: #718096; font-style: italic; text-align: center; padding: 40px;">
-              Waiting to start...
-            </p>
-          </div>
-        </div>
+    <div class="main-grid">
+      <div class="panel">
+        <h3>🎨 Network Visualization</h3>
+        <canvas id="networkCanvas" width="750" height="650"></canvas>
       </div>
 
       <div class="panel">
-        <h3>📊 All Layer Values</h3>
-        <div id="layerValuesContent"></div>
+        <h3>🔍 Step-by-Step Calculation</h3>
+        <div id="calculationContent">
+          <p style="color: #718096; font-style: italic; text-align: center; padding: 40px;">
+            Waiting to start...
+          </p>
+        </div>
       </div>
     </div>
+  </div>
 
     <script type="module" src="nn_visualizer.js"></script>
   </body>

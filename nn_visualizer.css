@@ -8,14 +8,14 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   min-height: 100vh;
-  padding: 20px;
+  padding: 0;
 }
 
 .container {
   max-width: 1800px;
   margin: 0 auto;
   background: white;
-  border-radius: 24px;
+  border-radius: 0;
   box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
   padding: 40px;
   animation: fadeIn 0.5s ease-in;
@@ -59,7 +59,7 @@ h1 {
 
 .control-panel {
   background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-  padding: 18px 25px;
+  padding: 12px 25px;
   border-radius: 16px;
   margin-bottom: 25px;
   border: 2px solid #e2e8f0;
@@ -70,18 +70,18 @@ h1 {
   gap: 12px;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 15px;
+  margin-top: 12px;
 }
 
 button {
-  padding: 14px 28px;
-  font-size: 16px;
+  padding: 10px 20px;
+  font-size: 14px;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-weight: 600;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-family: inherit;
 }
 
@@ -163,7 +163,7 @@ button:disabled {
 }
 
 .progress-container {
-  margin-top: 12px;
+  margin-top: 0;
   position: relative;
 }
 

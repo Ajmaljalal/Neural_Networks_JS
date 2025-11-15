@@ -241,11 +241,7 @@ window.stopAuto = function () {
 }
 
 function updateStatus(message) {
-  const phaseLabel = phase === 'feedforward' ? '<span class="phase-indicator phase-feedforward">Feedforward</span>' :
-    phase === 'backprop' ? '<span class="phase-indicator phase-backprop">Backprop</span>' :
-      phase === 'update' ? '<span class="phase-indicator phase-update">Update</span>' : '';
-
-  document.getElementById('status').innerHTML = message + phaseLabel;
+  // Status bar removed - function kept for compatibility
 }
 
 function updateProgress() {
@@ -647,35 +643,9 @@ function displayUpdateCalc(container) {
   `;
 }
 
+// Layer values display removed - section no longer in UI
 function displayLayerValues() {
-  const container = document.getElementById('layerValuesContent');
-  let html = '';
-
-  for (let l = 0; l < SIZES.length; l++) {
-    html += `<div class="layer-section">`;
-    html += `<h4>
-      Layer ${l + 1} - ${LAYER_NAMES[l]}
-      <span class="info-badge">${SIZES[l]} neurons</span>
-    </h4>`;
-    html += `<div class="layer-values">`;
-
-    for (let i = 0; i < SIZES[l]; i++) {
-      const value = layerValues[l][i];
-      const isEmpty = value === null;
-      const isActive = (phase === 'feedforward' && l === currentLayer + 1 && i === currentNeuron && currentSubStep !== 'idle');
-
-      html += `
-        <div class="value-box ${isEmpty ? 'empty' : ''} ${isActive ? 'active' : ''}">
-          <div class="value-label">Neuron ${i}</div>
-          <div class="value-number">${isEmpty ? '—' : value.toFixed(3)}</div>
-        </div>
-      `;
-    }
-
-    html += `</div></div>`;
-  }
-
-  container.innerHTML = html;
+  // Function kept for compatibility
 }
 
 // Initialize on page load
