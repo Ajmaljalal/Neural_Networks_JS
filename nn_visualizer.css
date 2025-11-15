@@ -304,7 +304,9 @@ canvas {
 
 .matrix-grid,
 .bias-vector {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   border: 2px solid #2d3748;
   border-radius: 8px;
   background: white;
@@ -314,10 +316,12 @@ canvas {
 
 .matrix-row {
   display: flex;
+  width: 100%;
 }
 
 .matrix-cell,
 .bias-cell {
+  flex: 1;
   min-width: 65px;
   height: 42px;
   display: flex;
@@ -328,15 +332,6 @@ canvas {
   font-weight: 600;
   font-family: 'Courier New', monospace;
   transition: all 0.3s;
-}
-
-.bias-vector {
-  display: flex;
-  flex-direction: column;
-}
-
-.bias-cell {
-  min-width: 90px;
 }
 
 .matrix-cell.highlight,
