@@ -366,19 +366,23 @@ function drawNetwork() {
         // - During error propagation to previous layer, show all outgoing connections from the neuron whose error we are computing.
         if (phase === 'backprop') {
           // We are computing gradients for weights in layer (currentLayer - 1)
+          // Note: currentNeuron is already incremented, so we use currentNeuron - 1 to show the neuron we just processed
           if (
             currentSubStep === 'calc_weight_grad_neuron' &&
             l === currentLayer - 1 &&
-            j === currentNeuron
+            j === currentNeuron - 1 &&
+            currentNeuron > 0
           ) {
             isBackprop = true;
           }
 
           // We are propagating error from next layer back to the current layer
+          // Note: currentNeuron is already incremented, so we use currentNeuron - 1 to show the neuron we just processed
           if (
             currentSubStep === 'propagate_error_neuron' &&
             l === currentLayer &&
-            i === currentNeuron
+            i === currentNeuron - 1 &&
+            currentNeuron > 0
           ) {
             isBackprop = true;
           }
@@ -418,8 +422,42 @@ function drawNetwork() {
         isActive = true;
       }
 
-      if (phase === 'backprop' && errors[l - 1] && errors[l - 1][i] !== undefined) {
-        hasError = true;
+      // Highlight the neuron being processed during backprop
+      if (phase === 'backprop') {
+        // During error calculation for output neurons
+        if (
+          currentSubStep === 'calc_error_neuron' &&
+          l === currentLayer &&
+          i === currentNeuron - 1 &&
+          currentNeuron > 0
+        ) {
+          isActive = true;
+        }
+
+        // During weight gradient calculation
+        if (
+          currentSubStep === 'calc_weight_grad_neuron' &&
+          l === currentLayer &&
+          i === currentNeuron - 1 &&
+          currentNeuron > 0
+        ) {
+          isActive = true;
+        }
+
+        // During error propagation to previous layer (we're computing error for neurons in currentLayer)
+        if (
+          currentSubStep === 'propagate_error_neuron' &&
+          l === currentLayer &&
+          i === currentNeuron - 1 &&
+          currentNeuron > 0
+        ) {
+          isActive = true;
+        }
+
+        // Show error indicator for all neurons that have computed errors
+        if (errors[l - 1] && errors[l - 1][i] !== undefined) {
+          hasError = true;
+        }
       }
 
       if (isEmpty) {
@@ -509,7 +547,8 @@ function renderWeightMatrix() {
         phase === 'backprop' &&
         layerIdx === currentLayer - 1 &&
         currentSubStep === 'calc_weight_grad_neuron' &&
-        row === currentNeuron;
+        row === currentNeuron - 1 &&
+        currentNeuron > 0;
 
       const isHighlight = isFeedforwardHighlight || isBackpropWeightHighlight;
 
@@ -534,8 +573,17 @@ function renderWeightMatrix() {
   html += '<div class="bias-vector">';
 
   for (let i = 0; i < biasVec.length; i++) {
-    const isHighlight = (phase === 'feedforward' && i === currentNeuron &&
-      (currentSubStep === 'add_bias' || currentSubStep === 'sigmoid'));
+    const isFeedforwardHighlight = phase === 'feedforward' && i === currentNeuron &&
+      (currentSubStep === 'add_bias' || currentSubStep === 'sigmoid');
+
+    const isBackpropHighlight = phase === 'backprop' &&
+      layerIdx === currentLayer - 1 &&
+      i === currentNeuron - 1 &&
+      currentNeuron > 0 &&
+      (currentSubStep === 'calc_error_neuron' || currentSubStep === 'calc_weight_grad_neuron');
+
+    const isHighlight = isFeedforwardHighlight || isBackpropHighlight;
+
     const val = biasVec[i];
     const intensity = Math.min(Math.abs(val), 1);
     const bgColor = val > 0
