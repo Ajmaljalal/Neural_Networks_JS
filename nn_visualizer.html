@@ -4,37 +4,162 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neural Network Complete Visualizer - Feedforward & Backprop</title>
+    <title>Learn Basics of Neural Networks — Level 01</title>
+    <link rel="stylesheet" href="landing.css">
     <link rel="stylesheet" href="nn_visualizer.css">
   </head>
 
   <body>
-    <div class="container">
-      <div class="control-panel">
-        <div class="controls">
-          <button class="btn-success" onclick="resetNetwork()">Reset Network</button>
-          <button class="btn-primary" onclick="nextStep()">Next Step</button>
-          <button class="btn-info" onclick="autoPlay()">Auto Play</button>
-          <button class="btn-danger" onclick="stopAuto()">Stop</button>
-          <button class="btn-warning" onclick="skipToBackprop()">Skip to Backprop</button>
-        </div>
-      </div>
-
-      <div class="main-grid" id="mainGrid">
-        <div class="panel" id="networkPanel">
-          <h3>Network Visualization</h3>
-          <canvas id="networkCanvas" width="750" height="650"></canvas>
-        </div>
-
-        <div class="panel" id="calculationPanel">
-          <h3>Step-by-Step Calculation</h3>
-          <div id="calculationContent">
-            <p style="color: #718096; font-style: italic; text-align: center; padding: 40px;">
-              Waiting to start...
-            </p>
+    <div class="landing-container">
+      <main class="hero-section course-detail">
+        <header class="site-header">
+          <div class="logo-cluster">
+            <span class="logo-symbol">NN</span>
+            <div>
+              <p class="logo-title">NeuroCanvas</p>
+              <p class="logo-subtitle">Deep Learning Studio</p>
+            </div>
           </div>
-        </div>
-      </div>
+
+          <nav class="nav-links">
+            <a class="nav-link" href="index.html">Studio</a>
+            <a class="nav-link" href="courses.html">Courses</a>
+            <a class="nav-link nav-link--accent" href="#interactive-lab">Interactive Lab</a>
+          </nav>
+        </header>
+
+        <section class="hero">
+          <div class="hero-eyebrow">Level 01</div>
+          <h1 class="main-title">Learn Basics of Neural Networks</h1>
+          <p class="subtitle">
+            Build intuition for neurons, activations, and training loops. Watch signals move forward,
+            gradients flow back, and weights update inside a calm studio. Short lessons lead into a live lab.
+          </p>
+
+          <div class="hero-pill-group">
+            <span class="hero-pill">Forward + backward pass</span>
+            <span class="hero-pill">Step-by-step math</span>
+            <span class="hero-pill">Hands-on controls</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="start-button" href="#interactive-lab">
+              Start Interactive Lab
+              <span class="arrow">→</span>
+            </a>
+            <a class="secondary-button" href="courses.html">Browse all courses</a>
+          </div>
+
+          <div class="hero-metrics">
+            <div class="metric-card">
+              <p class="metric-label">Modules</p>
+              <p class="metric-value">4</p>
+              <p class="metric-hint">Neurons, forward, backward, updates</p>
+            </div>
+            <div class="metric-card">
+              <p class="metric-label">Practice time</p>
+              <p class="metric-value">3h</p>
+              <p class="metric-hint">Self-paced with live controls</p>
+            </div>
+            <div class="metric-card">
+              <p class="metric-label">Skill level</p>
+              <p class="metric-value">Intro</p>
+              <p class="metric-hint">No prior ML math needed</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="course-grid course-outline" id="course-outline">
+          <article class="course-card">
+            <div class="course-badge">Module 01</div>
+            <h3>Neurons & Signals</h3>
+            <p>Get a feel for inputs, weights, biases, and activation choices.</p>
+            <ul class="course-outline">
+              <li>Neuron as a sum + activation</li>
+              <li>Why we normalize inputs</li>
+              <li>How bias shifts the output</li>
+            </ul>
+          </article>
+          <article class="course-card">
+            <div class="course-badge">Module 02</div>
+            <h3>Forward Story</h3>
+            <p>Trace activations across layers and see outputs stabilize.</p>
+            <ul class="course-outline">
+              <li>Layer-by-layer overlays</li>
+              <li>Activation comparisons</li>
+              <li>Loss tracking basics</li>
+            </ul>
+          </article>
+          <article class="course-card">
+            <div class="course-badge">Module 03</div>
+            <h3>Gradient Echo</h3>
+            <p>Slow gradients down and inspect each derivative.</p>
+            <ul class="course-outline">
+              <li>Chain rule in plain words</li>
+              <li>Jacobian snapshots</li>
+              <li>Error feedback intuition</li>
+            </ul>
+          </article>
+          <article class="course-card">
+            <div class="course-badge">Module 04</div>
+            <h3>Update Loop</h3>
+            <p>Watch SGD and friends nudge weights into better regions.</p>
+            <ul class="course-outline">
+              <li>Learning rate sweeps</li>
+              <li>Momentum vs. vanilla</li>
+              <li>Scheduler experiments</li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="course-lab" id="interactive-lab">
+          <div class="lab-header">
+            <p class="hero-eyebrow">Interactive Lab</p>
+            <h2>Practice everything with live controls.</h2>
+            <p>Use the visualizer to guide each feedforward, backprop, and update step.
+              Pause, rewind, or skip ahead to focus on the part you need.</p>
+          </div>
+
+          <div class="lab-shell">
+            <div class="container">
+              <div class="control-panel">
+                <div class="controls">
+                  <button class="btn-success" onclick="resetNetwork()">Reset Network</button>
+                  <button class="btn-primary" onclick="nextStep()">Next Step</button>
+                  <button class="btn-info" onclick="autoPlay()">Auto Play</button>
+                  <button class="btn-danger" onclick="stopAuto()">Stop</button>
+                  <button class="btn-warning" onclick="skipToBackprop()">Skip to Backprop</button>
+                </div>
+              </div>
+
+              <div class="main-grid" id="mainGrid">
+                <div class="panel" id="networkPanel">
+                  <h3>Network Visualization</h3>
+                  <canvas id="networkCanvas" width="750" height="650"></canvas>
+                </div>
+
+                <div class="panel" id="calculationPanel">
+                  <h3>Step-by-Step Calculation</h3>
+                  <div id="calculationContent">
+                    <p style="color: #718096; font-style: italic; text-align: center; padding: 40px;">
+                      Waiting to start...
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer class="site-footer">
+          <p>Need a guided session for your team? Reach out and we’ll tailor this lab.</p>
+          <div class="footer-links">
+            <a href="courses.html">All Courses</a>
+            <a href="index.html">Studio</a>
+            <a href="mailto:hello@neurocanvas.studio">Contact</a>
+          </div>
+        </footer>
+      </main>
     </div>
 
     <script type="module" src="nn_visualizer.js"></script>

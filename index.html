@@ -4,48 +4,167 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neural Network Visualizer - Welcome</title>
+    <title>NeuroCanvas — Neural Network & Deep Learning Studio</title>
     <link rel="stylesheet" href="landing.css">
   </head>
 
   <body>
     <div class="landing-container">
-      <div class="hero-section">
-        <h1 class="main-title">Complete Neural Network Visualizer</h1>
-        <p class="subtitle">Watch Feedforward & Backpropagation step-by-step with live updates!</p>
-
-        <div class="features">
-          <div class="feature-card">
-            <h3>Step-by-Step Learning</h3>
-            <p>Follow each calculation from input to output with detailed explanations</p>
+      <main class="hero-section">
+        <header class="site-header">
+          <div class="logo-cluster">
+            <span class="logo-symbol">NN</span>
+            <div>
+              <p class="logo-title">NeuroCanvas</p>
+              <p class="logo-subtitle">Deep Learning Studio</p>
+            </div>
           </div>
 
-          <div class="feature-card">
-            <h3>Backpropagation</h3>
-            <p>Understand how gradients flow backward through the network</p>
+          <nav class="nav-links">
+            <a class="nav-link" href="#experience">Experience</a>
+            <a class="nav-link" href="#journey">Journey</a>
+            <a class="nav-link" href="#insights">Insights</a>
+            <a class="nav-link" href="courses.html">Courses</a>
+            <a class="nav-link nav-link--accent" href="nn_visualizer.html">Visualizer</a>
+          </nav>
+        </header>
+
+        <section class="hero">
+          <div class="hero-eyebrow">Neural Learning</div>
+          <h1 class="main-title">Follow the complete neural network path.</h1>
+          <p class="subtitle">
+            Move through ten clear levels—from single neurons to large-scale systems—with calm visuals,
+            guided copy, and labs that let you practice every concept in real time.
+          </p>
+
+          <div class="hero-pill-group">
+            <span class="hero-pill">10-level curriculum</span>
+            <span class="hero-pill">Interactive labs</span>
+            <span class="hero-pill">Printable notes & checkpoints</span>
           </div>
 
-          <div class="feature-card">
-            <h3>Weight Updates</h3>
-            <p>See exactly how weights and biases change during training</p>
+          <div class="hero-actions">
+            <a class="secondary-button" href="courses.html">
+              Browse Courses
+            </a>
           </div>
-        </div>
 
-        <button class="start-button" onclick="window.location.href='nn_visualizer.html'">
-          Start Visualizing
-          <span class="arrow">→</span>
-        </button>
+          <div class="hero-metrics">
+            <div class="metric-card">
+              <p class="metric-label">Interactive Steps</p>
+              <p class="metric-value">200+</p>
+              <p class="metric-hint">Forward pass, loss, gradients, updates</p>
+            </div>
+            <div class="metric-card">
+              <p class="metric-label">Learning Paths</p>
+              <p class="metric-value">6</p>
+              <p class="metric-hint">From neurons to transformers</p>
+            </div>
+            <div class="metric-card">
+              <p class="metric-label">Live Experiments</p>
+              <p class="metric-value">∞</p>
+              <p class="metric-hint">Tweak settings and see the effect</p>
+            </div>
+          </div>
+        </section>
 
-        <div class="info-box">
-          <p><strong>What you'll learn:</strong></p>
+        <section class="course-preview" id="experience">
+          <div class="preview-header">
+            <p class="hero-eyebrow">Featured Levels</p>
+            <h2>See how the curriculum expands.</h2>
+            <p>Each level adds a new neural network family with matching labs and projects.</p>
+          </div>
+          <div class="preview-grid">
+            <article class="preview-card">
+              <p class="preview-level">Level 01</p>
+              <h3>Learn Basics of Neural Networks</h3>
+              <p>Neurons, forward/backward passes, and live weight updates.</p>
+            </article>
+            <article class="preview-card">
+              <p class="preview-level">Level 04</p>
+              <h3>Convolutional Neural Networks</h3>
+              <p>Filters, receptive fields, and transfer learning briefs for vision teams.</p>
+            </article>
+            <article class="preview-card">
+              <p class="preview-level">Level 08</p>
+              <h3>Generative Adversarial Networks</h3>
+              <p>Generator vs. discriminator drills plus diffusion-style samplers.</p>
+            </article>
+            <article class="preview-card">
+              <p class="preview-level">Level 10</p>
+              <h3>Reinforcement Learning & Policy Networks</h3>
+              <p>Reward shaping, policy gradients, and actor-critic dashboards.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="features">
+          <article class="feature-card">
+            <div class="feature-icon">⟡</div>
+            <h3>Level-by-Level Guidance</h3>
+            <p>Every module outlines goals, prerequisites, and checkpoints so you always know what's next.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">↺</div>
+            <h3>Interactive Practice</h3>
+            <p>Use the same visualizer inside each course to test feedforward, backprop, and updates.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">✦</div>
+            <h3>Minimal Interface</h3>
+            <p>Clean typography, glassmorphic panels, and focused text keep complex topics approachable.</p>
+          </article>
+        </section>
+
+        <section class="learning-path" id="journey">
+          <div class="path-header">
+            <p class="hero-eyebrow">Learning Path</p>
+            <h2>Move from basics to builds.</h2>
+            <p>Four short phases keep the flow steady and clear.</p>
+          </div>
+          <div class="path-grid">
+            <article class="path-card">
+              <span class="path-step">01</span>
+              <h3>Input Sense</h3>
+              <p>Prep data, normalize values, and track how signals enter the net.</p>
+            </article>
+            <article class="path-card">
+              <span class="path-step">02</span>
+              <h3>Forward Story</h3>
+              <p>See each layer light up and compare shapes with a single toggle.</p>
+            </article>
+            <article class="path-card">
+              <span class="path-step">03</span>
+              <h3>Gradient Echo</h3>
+              <p>Hear the gradients pulse back, shrink loss, and highlight weak spots.</p>
+            </article>
+            <article class="path-card">
+              <span class="path-step">04</span>
+              <h3>Update Loop</h3>
+              <p>Watch each optimizer nudge weights and learn how schedules change the pace.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="info-box insight-panel" id="insights">
+          <p><strong>Why learners pick these courses</strong></p>
           <ul>
-            <li>How neural networks process information (feedforward)</li>
-            <li>How networks learn from mistakes (backpropagation)</li>
-            <li>How gradient descent updates weights and biases</li>
-            <li>The complete training cycle in action</li>
+            <li>Modular levels that move from basics to advanced NNs without guesswork.</li>
+            <li>Each course pairs plain-language notes with the same visual lab you just saw.</li>
+            <li>Hands-on tasks, printable summaries, and checkpoints keep momentum.</li>
+            <li>Live lab sessions reinforce every concept before you jump to the next level.</li>
           </ul>
-        </div>
-      </div>
+        </section>
+
+        <footer class="site-footer">
+          <p>Built for curious students, teams, and anyone learning neural nets.</p>
+          <div class="footer-links">
+            <a href="courses.html">Courses</a>
+            <a href="nn_visualizer.html">Visualizer</a>
+            <a href="mailto:hello@neurocanvas.studio">Contact</a>
+          </div>
+        </footer>
+      </main>
     </div>
   </body>
 
