@@ -104,16 +104,16 @@
 .theme-toggle {
   background: var(--bg-card);
   border: 1px solid var(--border-secondary);
-  border-radius: 999px;
-  padding: 0.45rem 0.85rem;
+  border-radius: 50%;
+  /* padding: 0.45rem 0.85rem; */
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 1.2rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 44px;
-  min-height: 44px;
+  min-width: 36px;
+  min-height: 36px;
   backdrop-filter: blur(10px);
 }
 
