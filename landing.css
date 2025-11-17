@@ -125,7 +125,7 @@ body::after {
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   padding-bottom: 1.2rem;
   border-bottom: 1px solid rgba(148, 163, 184, 0.12);
 }
@@ -696,6 +696,8 @@ body::after {
   justify-content: center;
   text-align: center;
   align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .section-tag {
@@ -732,8 +734,10 @@ body::after {
 
 .path-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .path-card {
@@ -897,8 +901,10 @@ body::after {
 
 .preview-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .preview-card {
@@ -1217,18 +1223,20 @@ body::after {
   }
 
   .site-header {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
   }
 
   .nav-links {
-    width: 100%;
-    justify-content: flex-start;
+    width: auto;
+    justify-content: flex-end;
   }
 
   .features,
   .preview-grid,
-  .course-grid {
+  .course-grid,
+  .path-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
     margin-bottom: 2vh;
