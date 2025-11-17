@@ -19,19 +19,19 @@
 }
 
 .course-outline .course-card {
-  border-color: rgba(226, 232, 240, 0.25);
-  background: rgba(15, 23, 42, 0.75);
+  border-color: var(--border-primary);
+  background: var(--bg-control-panel);
 }
 
 .course-card {
-  background: rgba(14, 21, 40, 0.7);
-  border: 1px solid rgba(99, 102, 241, 0.25);
+  background: var(--bg-panel);
+  border: 1px solid var(--border-secondary);
   border-radius: 26px;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+  box-shadow: var(--shadow-md);
   height: 100%;
 }
 
@@ -39,8 +39,8 @@
   align-self: flex-start;
   border-radius: 999px;
   padding: 0.3rem 0.9rem;
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  color: rgba(226, 232, 240, 0.85);
+  border: 1px solid var(--border-secondary);
+  color: var(--text-tertiary);
   font-size: 0.82rem;
 }
 
@@ -53,8 +53,8 @@
   position: relative;
   margin: 0.5rem 0;
   border-radius: 16px;
-  background: rgba(15, 23, 42, 0.5);
-  border: 1px solid rgba(99, 102, 241, 0.15);
+  background: var(--bg-control-panel);
+  border: 1px solid var(--border-primary);
   overflow: hidden;
 }
 
@@ -350,8 +350,8 @@
   gap: 4px;
   padding: 8px;
   border-radius: 8px;
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(99, 102, 241, 0.3);
+  background: var(--bg-control-panel);
+  border: 1px solid var(--border-secondary);
   position: relative;
   animation: rackPulse 3s ease-in-out infinite;
 }
@@ -527,7 +527,7 @@
 .gan-label {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #f8fafc;
+  color: var(--text-primary);
   text-shadow: 0 0 10px rgba(99, 102, 241, 0.8);
 }
 
@@ -753,7 +753,7 @@
 .state-label,
 .action-label {
   font-size: 0.65rem;
-  color: rgba(226, 232, 240, 0.8);
+  color: var(--text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -823,11 +823,11 @@
 }
 
 .course-card h3 {
-  color: #f8fafc;
+  color: var(--text-primary);
 }
 
 .course-card p {
-  color: rgba(241, 245, 249, 0.85);
+  color: var(--text-tertiary);
   line-height: 1.5;
 }
 
@@ -841,7 +841,7 @@
 }
 
 .course-outline li {
-  color: rgba(203, 213, 225, 0.85);
+  color: var(--text-muted);
   font-size: 0.9rem;
   padding-left: 1rem;
   position: relative;
@@ -859,7 +859,7 @@
   justify-content: space-between;
   align-items: center;
   font-size: 0.85rem;
-  color: rgba(148, 163, 184, 0.8);
+  color: var(--text-hint);
 }
 
 .course-status {
@@ -888,7 +888,7 @@
   border-radius: 12px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid transparent;
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+  background: var(--gradient-primary);
   background-size: 200% 200%;
   box-shadow:
     0 0 20px rgba(99, 102, 241, 0.4),
@@ -937,9 +937,9 @@
 }
 
 .course-link--disabled {
-  background: rgba(148, 163, 184, 0.08) !important;
-  border: 1px solid rgba(148, 163, 184, 0.15) !important;
-  color: rgba(148, 163, 184, 0.5) !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-primary) !important;
+  color: var(--text-hint) !important;
   cursor: not-allowed;
   opacity: 0.7;
   box-shadow: none !important;
@@ -954,16 +954,16 @@
 }
 
 .course-link--disabled:hover {
-  background: rgba(148, 163, 184, 0.08) !important;
-  border-color: rgba(148, 163, 184, 0.15) !important;
-  color: rgba(148, 163, 184, 0.5) !important;
+  background: var(--bg-card) !important;
+  border-color: var(--border-primary) !important;
+  color: var(--text-hint) !important;
   transform: none !important;
   box-shadow: none !important;
 }
 
 .course-lab {
-  background: rgba(15, 23, 42, 0.65);
-  border: 1px solid rgba(99, 102, 241, 0.35);
+  background: var(--bg-control-panel);
+  border: 1px solid var(--border-tertiary);
   border-radius: 28px;
   padding: 2rem;
   display: flex;
@@ -972,21 +972,21 @@
 }
 
 .lab-header h2 {
-  color: #f8fafc;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
   font-size: clamp(1.4rem, 2.4vw, 2rem);
 }
 
 .lab-header p {
-  color: rgba(226, 232, 240, 0.85);
+  color: var(--text-tertiary);
   max-width: 760px;
 }
 
 .lab-shell {
   border-radius: 28px;
-  background: rgba(15, 15, 30, 0.4);
+  background: var(--bg-lab-container);
   padding: 1rem;
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  border: 1px solid var(--border-primary);
   overflow: hidden;
 }
 
