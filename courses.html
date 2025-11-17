@@ -44,6 +44,7 @@
         </section>
 
         <section class="course-grid" id="courses">
+          <!-- Level 01: Neural Networks Basics -->
           <article class="course-card">
             <div class="course-badge">Level 01</div>
             <div class="course-visual course-visual--neurons">
@@ -56,13 +57,14 @@
             <h3>Neural Networks Basics</h3>
             <p>Follow a guided story through neurons, forward passes, gradients, and updates with a live lab.</p>
             <ul class="course-outline">
-              <li>Neuron intuition + normalization</li>
-              <li>Forward & backward walkthroughs</li>
-              <li>Hands-on update experiments</li>
+              <li>Neuron intuition</li>
+              <li>Forward pass, loss, gradients</li>
+              <li>Manual weight updates</li>
             </ul>
             <a class="course-link" href="nn_basics.html">Open course →</a>
           </article>
 
+          <!-- Level 02: Feedforward Deep Dive (MLPs) -->
           <article class="course-card">
             <div class="course-badge">Level 02</div>
             <div class="course-visual course-visual--layers">
@@ -71,16 +73,17 @@
               <div class="layer-bar"></div>
               <div class="layer-bar"></div>
             </div>
-            <h3>Feedforward Deep Dive</h3>
+            <h3>Feedforward Deep Dive (MLPs)</h3>
             <p>Design multi-layer perceptrons, compare depth vs. width, and stress-test activations.</p>
             <ul class="course-outline">
-              <li>Architecture sketching lab</li>
-              <li>Regularization drills</li>
-              <li>Batching experiments</li>
+              <li>Depth vs. width</li>
+              <li>Regularization</li>
+              <li>Batching</li>
             </ul>
             <button class="course-link course-link--disabled" disabled>Coming soon</button>
           </article>
 
+          <!-- Level 03: Backpropagation & Optimization -->
           <article class="course-card">
             <div class="course-badge">Level 03</div>
             <div class="course-visual course-visual--gradient">
@@ -91,13 +94,14 @@
             <h3>Backpropagation & Optimization</h3>
             <p>Slow gradients down, inspect derivatives, and practice with SGD, momentum, and schedulers.</p>
             <ul class="course-outline">
-              <li>Gradient tracing labs</li>
-              <li>Optimizer swap-outs</li>
-              <li>Custom scheduler studio</li>
+              <li>Real derivations</li>
+              <li>SGD, Momentum, Adam</li>
+              <li>Learning rate schedules</li>
             </ul>
             <button class="course-link course-link--disabled" disabled>Coming soon</button>
           </article>
 
+          <!-- Level 04: Convolutional Neural Networks (CNNs) -->
           <article class="course-card">
             <div class="course-badge">Level 04</div>
             <div class="course-visual course-visual--conv">
@@ -107,67 +111,19 @@
                 <span></span><span></span><span></span>
               </div>
             </div>
-            <h3>Convolutional Neural Networks</h3>
+            <h3>Convolutional Neural Networks (CNNs)</h3>
             <p>Build CNN pipelines, tune filters, and apply transfer learning to modern vision tasks.</p>
             <ul class="course-outline">
-              <li>Kernel sculpting exercises</li>
-              <li>Feature map critiques</li>
-              <li>Transfer learning projects</li>
+              <li>Kernels, filters, pooling</li>
+              <li>Feature maps</li>
+              <li>Transfer learning</li>
             </ul>
             <button class="course-link course-link--disabled" disabled>Coming soon</button>
           </article>
 
+          <!-- Level 05: Autoencoders -->
           <article class="course-card">
             <div class="course-badge">Level 05</div>
-            <div class="course-visual course-visual--sequence">
-              <div class="seq-block"></div>
-              <div class="seq-block"></div>
-              <div class="seq-block"></div>
-              <div class="seq-block"></div>
-              <div class="attention-beam"></div>
-            </div>
-            <h3>Sequence Models & Transformers</h3>
-            <p>Move from RNNs to Transformers with attention visualizations, prompts, and fine-tuning.</p>
-            <ul class="course-outline">
-              <li>Sequence memory drills</li>
-              <li>Attention head anatomy</li>
-              <li>Prompt crafting studio</li>
-            </ul>
-            <button class="course-link course-link--disabled" disabled>Coming soon</button>
-          </article>
-
-          <article class="course-card">
-            <div class="course-badge">Level 06</div>
-            <div class="course-visual course-visual--distributed">
-              <div class="server-rack">
-                <div class="server-line"></div>
-                <div class="server-line"></div>
-                <div class="server-line"></div>
-              </div>
-              <div class="server-rack">
-                <div class="server-line"></div>
-                <div class="server-line"></div>
-                <div class="server-line"></div>
-              </div>
-              <div class="server-rack">
-                <div class="server-line"></div>
-                <div class="server-line"></div>
-                <div class="server-line"></div>
-              </div>
-              <div class="data-flow"></div>
-            </div>
-            <h3>Large-Scale Training Systems</h3>
-            <p>Scale experiments, manage distributed training, and build interpretability dashboards.</p>
-            <ul class="course-outline">
-              <li>Experiment orchestration</li>
-              <li>Structured logging rituals</li>
-              <li>Interpretability mapping</li>
-            </ul>
-            <button class="course-link course-link--disabled" disabled>Coming soon</button>
-          </article>
-
-          <article class="course-card">
-            <div class="course-badge">Level 07</div>
             <div class="course-visual course-visual--autoencoder">
               <div class="ae-layer ae-input">
                 <span></span><span></span><span></span><span></span>
@@ -188,13 +144,53 @@
             <h3>Autoencoders</h3>
             <p>Compress, reconstruct, and denoise signals with encoder–decoder pairs and latent controls.</p>
             <ul class="course-outline">
-              <li>Bottleneck intuition labs</li>
-              <li>Denoising + sparse variants</li>
-              <li>Latent space visual walks</li>
+              <li>Encode → decode</li>
+              <li>Latent spaces</li>
+              <li>Denoising</li>
             </ul>
             <button class="course-link course-link--disabled" disabled>Coming soon</button>
           </article>
 
+          <!-- Level 06: Sequence Models (RNNs, GRUs, LSTMs) -->
+          <article class="course-card">
+            <div class="course-badge">Level 06</div>
+            <div class="course-visual course-visual--sequence">
+              <div class="seq-block"></div>
+              <div class="seq-block"></div>
+              <div class="seq-block"></div>
+              <div class="seq-block"></div>
+            </div>
+            <h3>Sequence Models (RNNs, LSTMs, GRUs)</h3>
+            <p>Master recurrent architectures for sequential data with memory cells and gating mechanisms.</p>
+            <ul class="course-outline">
+              <li>Sequence memory</li>
+              <li>Vanishing gradients</li>
+              <li>Time-dependent loss</li>
+            </ul>
+            <button class="course-link course-link--disabled" disabled>Coming soon</button>
+          </article>
+
+          <!-- Level 07: Transformers -->
+          <article class="course-card">
+            <div class="course-badge">Level 07</div>
+            <div class="course-visual course-visual--sequence">
+              <div class="seq-block"></div>
+              <div class="seq-block"></div>
+              <div class="seq-block"></div>
+              <div class="seq-block"></div>
+              <div class="attention-beam"></div>
+            </div>
+            <h3>Transformers</h3>
+            <p>Explore attention mechanisms, self-attention, and modern transformer architectures.</p>
+            <ul class="course-outline">
+              <li>Attention</li>
+              <li>Multi-head attention</li>
+              <li>Positional encodings</li>
+            </ul>
+            <button class="course-link course-link--disabled" disabled>Coming soon</button>
+          </article>
+
+          <!-- Level 08: GANs -->
           <article class="course-card">
             <div class="course-badge">Level 08</div>
             <div class="course-visual course-visual--gan">
@@ -212,18 +208,43 @@
                 <div class="gan-verdict"></div>
               </div>
             </div>
-            <h3>Generative Adversarial Networks</h3>
-            <p>Stage GAN duels, stabilize training, and explore diffusion-inspired upgrades.</p>
+            <h3>Generative Adversarial Networks (GANs)</h3>
+            <p>Stage GAN duels, stabilize training, and master advanced generative techniques.</p>
             <ul class="course-outline">
-              <li>Generator vs. discriminator drills</li>
-              <li>Mode collapse triage</li>
-              <li>Intro to diffusion samplers</li>
+              <li>Generator vs discriminator</li>
+              <li>BCE loss tweaks</li>
+              <li>Training instability</li>
             </ul>
             <button class="course-link course-link--disabled" disabled>Coming soon</button>
           </article>
 
+          <!-- Level 09: Diffusion Models -->
           <article class="course-card">
             <div class="course-badge">Level 09</div>
+            <div class="course-visual course-visual--autoencoder">
+              <div class="ae-layer ae-input">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="ae-layer ae-latent">
+                <span></span><span></span>
+              </div>
+              <div class="ae-layer ae-output">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+            <h3>Diffusion Models</h3>
+            <p>Learn state-of-the-art generative models through iterative denoising processes.</p>
+            <ul class="course-outline">
+              <li>Noise schedule</li>
+              <li>U-Nets</li>
+              <li>Sampling</li>
+            </ul>
+            <button class="course-link course-link--disabled" disabled>Coming soon</button>
+          </article>
+
+          <!-- Level 1: Graph Neural Networks -->
+          <article class="course-card">
+            <div class="course-badge">Level 11</div>
             <div class="course-visual course-visual--graph">
               <svg class="graph-svg" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
                 <line class="graph-line" x1="30" y1="20" x2="50" y2="30" />
@@ -239,18 +260,19 @@
                 <circle class="graph-circle" cx="90" cy="30" r="5" />
               </svg>
             </div>
-            <h3>Graph Neural Networks</h3>
+            <h3>Graph Neural Networks (GNNs)</h3>
             <p>Model relationships with message passing, pooling strategies, and graph-level readouts.</p>
             <ul class="course-outline">
-              <li>Graph construction lab</li>
-              <li>GNN variants (GCN, GAT, GraphSAGE)</li>
-              <li>Applications in science + recommenders</li>
+              <li>Message passing</li>
+              <li>GraphSAGE, GAT</li>
+              <li>Graph pooling</li>
             </ul>
             <button class="course-link course-link--disabled" disabled>Coming soon</button>
           </article>
 
+          <!-- Level 11: Reinforcement Learning -->
           <article class="course-card">
-            <div class="course-badge">Level 10</div>
+            <div class="course-badge">Level 11</div>
             <div class="course-visual course-visual--rl">
               <div class="rl-cycle">
                 <div class="rl-state">
@@ -267,12 +289,12 @@
                 </div>
               </div>
             </div>
-            <h3>Reinforcement Learning & Policy Networks</h3>
+            <h3>Reinforcement Learning</h3>
             <p>Train policy networks, value estimators, and actor-critic stacks with live reward dashboards.</p>
             <ul class="course-outline">
-              <li>Environment + reward shaping</li>
-              <li>Policy gradients & advantage tricks</li>
-              <li>Multi-agent coordination sims</li>
+              <li>State → action</li>
+              <li>Rewards</li>
+              <li>Policy gradient & Actor-critic</li>
             </ul>
             <button class="course-link course-link--disabled" disabled>Coming soon</button>
           </article>
