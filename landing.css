@@ -134,11 +134,18 @@ body::after {
   display: flex;
   align-items: center;
   gap: 0.9rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.logo-cluster:hover {
+  opacity: 0.85;
 }
 
 .logo-symbol {
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
   border-radius: 16px;
   display: inline-flex;
   align-items: center;
@@ -148,17 +155,18 @@ body::after {
   letter-spacing: 0.08em;
   color: #f8fafc;
   box-shadow: 0 10px 30px rgba(99, 102, 241, 0.35);
+  font-size: 1.1rem;
 }
 
 .logo-title {
   color: #e2e8f0;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.15rem;
 }
 
 .logo-subtitle {
   color: rgba(241, 245, 249, 0.75);
-  font-size: 0.85rem;
+  font-size: 0.92rem;
 }
 
 .nav-links {
@@ -209,18 +217,18 @@ body::after {
 
 .hero-visual {
   position: relative;
-  padding: clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(2rem, 4vw, 3.5rem);
   border-radius: 32px;
   background: radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.25), rgba(15, 23, 42, 0.8));
   border: 1px solid rgba(79, 70, 229, 0.35);
   overflow: hidden;
   isolation: isolate;
-  min-height: 320px;
+  min-height: 420px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   margin: 0.5rem auto 1.5rem;
-  max-width: min(1550px, 100%);
+  max-width: min(1850px, 100%);
 }
 
 .hero-metrics,
