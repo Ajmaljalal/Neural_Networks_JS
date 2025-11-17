@@ -90,6 +90,7 @@ body::after {
   backdrop-filter: blur(40px) saturate(180%);
   border-radius: 0;
   padding: 4vh 5vw;
+  padding-top: 20px;
   box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.4),
     0 0 0 1px rgba(255, 255, 255, 0.05) inset,
@@ -218,6 +219,8 @@ body::after {
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  margin: 0.5rem auto 1.5rem;
+  max-width: min(1550px, 100%);
 }
 
 .hero-metrics,
@@ -499,7 +502,7 @@ body::after {
 }
 
 .main-title {
-  font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+  font-size: clamp(1.8rem, 4vw, 2.9rem);
   margin-bottom: 1.5vh;
   font-weight: 800;
   background: linear-gradient(135deg, #6366f1 0%, #ec4899 50%, #8b5cf6 100%);
@@ -534,6 +537,14 @@ body::after {
   margin-top: 2vh;
 }
 
+.section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.6rem;
+}
+
 .section-header h2 {
   color: #f8fafc;
   font-size: clamp(1.6rem, 3vw, 2.4rem);
@@ -543,11 +554,12 @@ body::after {
 .section-header p {
   color: rgba(226, 232, 240, 0.85);
   max-width: 640px;
+  margin: 0 auto;
 }
 
 .experience-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: clamp(1.2rem, 2vw, 2rem);
 }
 
@@ -649,8 +661,8 @@ body::after {
 }
 
 .journey-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: clamp(1.2rem, 2vw, 2rem);
   margin-top: clamp(2rem, 3vw, 3rem);
 }
@@ -674,6 +686,8 @@ body::after {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
+  align-items: center;
 }
 
 .section-tag {
@@ -688,6 +702,14 @@ body::after {
   display: flex;
   flex-direction: column;
   gap: 1.4rem;
+}
+
+.path-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: center;
 }
 
 .path-header h2 {
