@@ -1087,6 +1087,7 @@ body::after {
   flex-direction: column;
   gap: 0.8rem;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+  height: 100%;
 }
 
 .course-badge {
@@ -1151,18 +1152,87 @@ body::after {
 }
 
 .course-link {
-  margin-top: 0.5rem;
+  margin-top: auto;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.3rem;
-  color: rgba(248, 250, 252, 0.9);
+  color: #ffffff;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+  background-size: 200% 200%;
+  box-shadow: 
+    0 0 20px rgba(99, 102, 241, 0.4),
+    0 4px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  animation: subtleGradient 4s ease infinite;
+}
+
+@keyframes subtleGradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.course-link::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+}
+
+.course-link:hover::before {
+  width: 200px;
+  height: 200px;
 }
 
 .course-link:hover {
-  color: #c4b5fd;
+  transform: translateY(-2px);
+  box-shadow: 
+    0 0 30px rgba(99, 102, 241, 0.6),
+    0 0 50px rgba(236, 72, 153, 0.4),
+    0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.course-link--disabled {
+  background: rgba(148, 163, 184, 0.08) !important;
+  border: 1px solid rgba(148, 163, 184, 0.15) !important;
+  color: rgba(148, 163, 184, 0.5) !important;
+  cursor: not-allowed;
+  opacity: 0.7;
+  box-shadow: none !important;
+  animation: none !important;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.6rem 1.3rem;
+}
+
+.course-link--disabled::before {
+  display: none;
+}
+
+.course-link--disabled:hover {
+  background: rgba(148, 163, 184, 0.08) !important;
+  border-color: rgba(148, 163, 184, 0.15) !important;
+  color: rgba(148, 163, 184, 0.5) !important;
+  transform: none !important;
+  box-shadow: none !important;
 }
 
 .course-lab {
